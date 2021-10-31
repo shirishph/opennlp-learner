@@ -19,7 +19,7 @@ $ bash setup.sh
 ## Run
 
 * In Explorer right-click on project > `Run As` > `1 Java Application` > Select `OpenNLP_Try_Out`
-* Montor output to console window
+* Monitor output to console window
 
 ## Push changes
 
