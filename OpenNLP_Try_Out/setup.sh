@@ -1,5 +1,5 @@
 #!/bin/sh
-echo -e "\033[1;37mDelete models directory\033[0m"
+echo -e "\033[1;37mModels directory setup\033[0m"
 if [ -d "./models" ]
 then
     echo "'models' directory exists. Deleting contents" 
