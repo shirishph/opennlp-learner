@@ -1,6 +1,5 @@
 /**
 
-* Try out most features of OpenNLP
 
 * Based on: https://opennlp.apache.org/docs/1.9.3/manual/opennlp.html
 
@@ -129,7 +128,7 @@ public class OpenNLP_Try_Out {
 	public static void languageDetector(String[] samples) throws IOException {
 		System.out.println("\n\n\u001B[35m>> Detect Language \u001B[0m");
 		System.out.println("\u001B[34mBest guess of sample text being in language with probability score. Accuracy improves with sample size\u001B[0m");
-		InputStream is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/langdetect-183.bin");
+		InputStream is = new FileInputStream("./models/langdetect-183.bin");
 		LanguageDetectorModel m = new LanguageDetectorModel(is);
 		LanguageDetector myCategorizer = new LanguageDetectorME(m);
 
@@ -147,7 +146,7 @@ public class OpenNLP_Try_Out {
 		System.out.println("\n\n\u001B[35m>> Detect Sentences \u001B[0m");
 		System.out.println("\u001B[34mDoes a punctuation character mark the end of a sentence or not\u001B[0m");
 		System.out.println(" * sample: " + sample);
-		InputStream is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-sent.bin");
+		InputStream is = new FileInputStream("./models/en-sent.bin");
 		SentenceModel model = new SentenceModel(is);
 		SentenceDetectorME sentenceDetector = new SentenceDetectorME(model);
 
@@ -169,7 +168,7 @@ public class OpenNLP_Try_Out {
 		System.out.println("\n\n\u001B[35m>> Detect Tokens \u001B[0m");
 		System.out.println("\u001B[34mSegment an input character sequence into tokens. Tokenization is a two-stage process: first, sentence boundaries are identified, then tokens within each sentence are identified. Tokenizer Implementations: Whitespace Tokenizer (whitespace tokenizer, non whitespace sequences are identified as tokens), Simple Tokenizer (character class tokenizer, sequences of the same character class are tokens) and Learnable Tokenizer (Maximum Entropy tokenizer, detects token boundaries based on probability model)\u001B[0m");
 		System.out.println(" * sample: " + sample);
-		InputStream is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-token.bin");
+		InputStream is = new FileInputStream("./models/en-token.bin");
 		TokenizerModel model = new TokenizerModel(is);
 		Tokenizer tokenizer = new TokenizerME(model);
 
@@ -193,7 +192,7 @@ public class OpenNLP_Try_Out {
 		System.out.println("\n\n\u001B[35m>> Detect Names \u001B[0m");
 		System.out.println("\u001B[34mNamed Entity Recognition. The Name Finder can detect named entities and numbers in text\u001B[0m");
 		System.out.println(" * sample: " + sample);
-		InputStream is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-ner-person.bin");
+		InputStream is = new FileInputStream("./models/en-ner-person.bin");
 		TokenNameFinderModel model = new TokenNameFinderModel(is);
 		NameFinderME nameFinder = new NameFinderME(model);
 		
@@ -222,8 +221,8 @@ public class OpenNLP_Try_Out {
 			System.out.println("   Training...");
 
 		    DoccatModel model = null;
-		    OutputStream dataOut = new FileOutputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-furries.model");	    
-	        InputStreamFactory dataIn = new MarkableFileInputStreamFactory(new File("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/data/en-furries.train"));
+		    OutputStream dataOut = new FileOutputStream("./models/en-furries.model");	    
+	        InputStreamFactory dataIn = new MarkableFileInputStreamFactory(new File("./data/en-furries.train"));
 
 	        ObjectStream<String> lineStream = new PlainTextByLineStream(dataIn, "UTF-8");
 	        ObjectStream<DocumentSample> sampleStream = new DocumentSampleStream(lineStream);
@@ -242,7 +241,7 @@ public class OpenNLP_Try_Out {
 		}
 		else {
 	        System.out.println("   Predicting...");
-			InputStream is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-furries.model");
+			InputStream is = new FileInputStream("./models/en-furries.model");
 			DoccatModel m = new DoccatModel(is);
 			DocumentCategorizerME myCategorizer = new DocumentCategorizerME(m);
 			double[] outcomes = myCategorizer.categorize(samples);
@@ -262,7 +261,7 @@ public class OpenNLP_Try_Out {
 		System.out.println("\n\n\u001B[35m>> POS Tagging \u001B[0m");
 		System.out.println("\u001B[34mThe Part of Speech Tagger marks tokens with their corresponding word type based on the token itself and the context of the token. POS Tagger uses a probability model to predict the correct pos tag\u001B[0m");
 		System.out.println(" * sample: " + sample);
-		InputStream is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-token.bin");
+		InputStream is = new FileInputStream("./models/en-token.bin");
 		TokenizerModel model = new TokenizerModel(is);
 		Tokenizer tokenizer = new TokenizerME(model);
 
@@ -270,7 +269,7 @@ public class OpenNLP_Try_Out {
 
 		is.close();
 
-		is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-pos-maxent.bin");
+		is = new FileInputStream("./models/en-pos-maxent.bin");
 		POSModel pos_model = new POSModel(is);
 		POSTaggerME tagger = new POSTaggerME(pos_model);
 		String tags[] = tagger.tag(tokens);
@@ -293,7 +292,7 @@ public class OpenNLP_Try_Out {
 		System.out.println("\u001B[34mGet the roots of all words by removing inflections and using something called as Morphological Analysis\u001B[0m");
 		System.out.println(" * sample: " + sample);
 				
-		InputStream is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-token.bin");
+		InputStream is = new FileInputStream("./models/en-token.bin");
 		TokenizerModel model = new TokenizerModel(is);
 		Tokenizer tokenizer = new TokenizerME(model);
 
@@ -301,12 +300,12 @@ public class OpenNLP_Try_Out {
 
 		is.close();
 
-		is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-pos-maxent.bin");
+		is = new FileInputStream("./models/en-pos-maxent.bin");
 		POSModel pos_model = new POSModel(is);
 		POSTaggerME tagger = new POSTaggerME(pos_model);
 		String tags[] = tagger.tag(tokens);
 
-		is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-lemmatizer.bin");
+		is = new FileInputStream("./models/en-lemmatizer.bin");
 		LemmatizerModel lemModel = new LemmatizerModel(is);
 		LemmatizerME lemmatizer = new LemmatizerME(lemModel);
 
@@ -325,7 +324,7 @@ public class OpenNLP_Try_Out {
 		System.out.println("\u001B[34mText chunking consists of dividing a text in syntactically correlated parts of words, like noun groups, verb groups, but does not specify their internal structure, nor their role in the main sentence. In simpler terms, it can extract phrases from unstructured text. The chunks are in IOB format. More here: https://lingpipe-blog.com/2009/10/14/coding-chunkers-as-taggers-io-bio-bmewo-and-bmewo/\u001B[0m");
 		System.out.println(" * sample: " + sample);
 				
-		InputStream is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-token.bin");
+		InputStream is = new FileInputStream("./models/en-token.bin");
 		TokenizerModel model = new TokenizerModel(is);
 		Tokenizer tokenizer = new TokenizerME(model);
 
@@ -333,12 +332,12 @@ public class OpenNLP_Try_Out {
 
 		is.close();
 
-		is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-pos-maxent.bin");
+		is = new FileInputStream("./models/en-pos-maxent.bin");
 		POSModel pos_model = new POSModel(is);
 		POSTaggerME tagger = new POSTaggerME(pos_model);
 		String tags[] = tagger.tag(tokens);
 
-		is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-chunker.bin");
+		is = new FileInputStream("./models/en-chunker.bin");
 		ChunkerModel chunkerModel = new ChunkerModel(is);
 		ChunkerME chunker = new ChunkerME(chunkerModel);
 		
@@ -357,7 +356,7 @@ public class OpenNLP_Try_Out {
 		System.out.println("\u001B[34mObtain a parse tree that specifies the internal structure of a sentence. \u001B[0m");
 		System.out.println(" * sample: " + sample);
 
-		InputStream is = new FileInputStream("/Users/shirish/eclipse-workspace/OpenNLP_Try_Out/models/en-parser-chunking.bin");
+		InputStream is = new FileInputStream("./models/en-parser-chunking.bin");
 		try {
 			ParserModel model = new ParserModel(is);
 			Parser parser = (Parser) ParserFactory.create(model);
