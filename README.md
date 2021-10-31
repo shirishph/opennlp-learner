@@ -2,8 +2,10 @@
 
 Try out major features of Apache's OpenNLP toolkit. Demos of text normalization, language detection, sentence detection, tokenization, NER, document categorization, POS tagging, lemmatization and chunking. The emphasis is not on creating models. Perhaps that could the next step
 
-## Build
+## Medium
+https://medium.com/@shirish.ph/opennlp-101-6618f93f58df
 
+## Build
 
 * Start Eclipse
 * Switch to Git perspective
